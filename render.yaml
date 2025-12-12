@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: ticket-booking-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PGHOST
+        value: localhost
+      - key: PGUSER
+        value: postgres
+      - key: PGPASSWORD
+        sync: false
+      - key: PGDATABASE
+        value: ticketdb
+      - key: PGPORT
+        value: 5432
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: ticketdb
+    databaseName: ticketdb
+    user: postgres
+    plan: free
+    region: oregon

@@ -1,0 +1,123 @@
+{
+  "info": {
+    "name": "Ticket Booking System API",
+    "description": "API collection for ticket booking backend with concurrency-safe booking operations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Admin Operations",
+      "item": [
+        {
+          "name": "Create Show",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Evening Concert\",\n  \"start_time\": \"2025-12-12T19:00:00Z\",\n  \"total_seats\": 100\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/shows",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "shows"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Show Operations",
+      "item": [
+        {
+          "name": "List Shows",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/shows",
+              "host": ["{{base_url}}"],
+              "path": ["shows"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Book Seats",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_name\": \"Alice\",\n  \"seats\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/shows/1/book",
+              "host": ["{{base_url}}"],
+              "path": ["shows", "1", "book"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Booking Operations",
+      "item": [
+        {
+          "name": "Get Booking Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/bookings/1",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/bookings/1/confirm",
+              "host": ["{{base_url}}"],
+              "path": ["bookings", "1", "confirm"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
