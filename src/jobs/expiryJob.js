@@ -26,7 +26,16 @@ async function expirePendingBookings(expiryMinutes = 2) {
     await client.query('COMMIT');
     return totalExpired;
   } catch (err) {
-    await client.query('ROLLBACK');
+    try {
+      await client.query('ROLLBACK');
+    } catch (rollbackErr) {
+      // Ignore rollback errors
+    }
+    // Check if it's a table not found error
+    if (err.message && err.message.includes('does not exist')) {
+      // Silently ignore - tables haven't been created yet
+      return 0;
+    }
     console.error('Error in expiry job', err);
     return 0;
   } finally {

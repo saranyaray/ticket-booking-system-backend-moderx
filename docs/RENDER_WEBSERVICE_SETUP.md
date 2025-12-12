@@ -34,14 +34,40 @@ postgresql://ticketdb_f6u0_user:nZ6T4jHEwUxALRHVwtFZgA7dFI9ks5UN@dpg-d4topl75r7b
 
 ## 🚀 Step 3: Fill in Service Details
 
+When you connect your GitHub repository, Render will **auto-detect** most settings from your `package.json`. Here's what you need to verify/adjust:
+
 ### Name
 ```
 ticket-booking-api
 ```
 
-### Environment
+### Root Directory
+```
+(leave empty - your code is in root)
+```
+
+### Runtime
 ```
 Node
+```
+
+### Build Command
+*(Render should auto-detect from package.json)*
+```
+npm install
+```
+If not shown, add it manually.
+
+### Start Command
+*(Render should auto-detect from package.json)*
+```
+npm start
+```
+If not shown, add it manually.
+
+### Instance Type
+```
+Free
 ```
 
 ### Region
@@ -49,26 +75,6 @@ Node
 Oregon (US West)
 ```
 (Same as your database for best performance)
-
-### Branch
-```
-main
-```
-
-### Build Command
-```
-npm install
-```
-
-### Start Command
-```
-npm start
-```
-
-### Instance Type / Plan
-```
-Free
-```
 
 ---
 
