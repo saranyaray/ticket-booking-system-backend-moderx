@@ -20,7 +20,10 @@ if (!DATABASE_URL) {
 
 const pool = new Pool({
   connectionString: DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  // Always use SSL for external databases (Render), but allow self-signed certs
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 async function runMigration(sqlFile) {
