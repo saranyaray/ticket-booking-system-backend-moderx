@@ -17,8 +17,9 @@ A production-ready Node.js + Express + Postgres backend demonstrating concurrenc
 ## Quick Links
 - [API Documentation](docs/api.md)
 - [Design & Architecture](docs/design.md)
+- [🌐 Deploy to Render - Step 1: PostgreSQL](docs/RENDER_POSTGRES_SETUP.md) ✅ **Done**
+- [🌐 Deploy to Render - Step 2: Web Service](docs/RENDER_WEBSERVICE_SETUP.md) ← **Next**
 - [Deployment Guide](docs/deployment.md)
-- [🌐 Deploy to Render (Get Public URL)](docs/RENDER_DEPLOYMENT.md) ← **Start here for hosting**
 - [Postman Collection](postman_collection.json)
 
 ---
