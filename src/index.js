@@ -1,12 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const showsRouter = require('./controllers/shows');
 const bookingsRouter = require('./controllers/bookings');
 const { startExpiryWorker } = require('./jobs/expiryJob');
 const db = require('./db');
 
 const app = express();
-app.use(bodyParser.json());
+// Use Express built-in JSON parser (no need for body-parser)
+app.use(express.json());
 
 app.use('/', showsRouter);
 app.use('/', bookingsRouter);
