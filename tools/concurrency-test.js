@@ -12,13 +12,17 @@ const CONCURRENCY = parseInt(process.env.CONCURRENCY || '100', 10);
 const REQUESTS = parseInt(process.env.REQUESTS || '500', 10);
 const SEATS_PER_REQUEST = parseInt(process.env.SEATS_PER_REQUEST || '1', 10);
 
-const pool = new Pool({
-  host: process.env.PGHOST || 'localhost',
-  user: process.env.PGUSER || 'postgres',
-  password: process.env.PGPASSWORD || 'postgres',
-  database: process.env.PGDATABASE || 'ticketdb',
-  port: process.env.PGPORT ? parseInt(process.env.PGPORT) : 5432,
-});
+const pool = new Pool(
+  process.env.DATABASE_URL
+    ? { connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } }
+    : {
+        host: process.env.PGHOST || 'localhost',
+        user: process.env.PGUSER || 'postgres',
+        password: process.env.PGPASSWORD || 'postgres',
+        database: process.env.PGDATABASE || 'ticketdb',
+        port: process.env.PGPORT ? parseInt(process.env.PGPORT) : 5432,
+      }
+);
 
 async function createTestShow() {
   try {

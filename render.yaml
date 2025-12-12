@@ -5,19 +5,12 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
+    healthCheckPath: /shows
     envVars:
-      - key: PGHOST
-        value: localhost
-      - key: PGUSER
-        value: postgres
-      - key: PGPASSWORD
-        sync: false
-      - key: PGDATABASE
-        value: ticketdb
-      - key: PGPORT
-        value: 5432
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 3000
 
 databases:
   - name: ticketdb
@@ -25,3 +18,4 @@ databases:
     user: postgres
     plan: free
     region: oregon
+    initialSqlPath: ./sql/schema.sql
