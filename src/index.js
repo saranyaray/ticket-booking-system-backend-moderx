@@ -8,6 +8,11 @@ const app = express();
 // Use Express built-in JSON parser (no need for body-parser)
 app.use(express.json());
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.use('/', showsRouter);
 app.use('/', bookingsRouter);
 
