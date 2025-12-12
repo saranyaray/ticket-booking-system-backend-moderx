@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "migrate": "node migrate.js",
     "loadtest": "node tools/loadtest.js",
     "test:concurrency": "node tools/concurrency-test.js",
     "test": "echo 'No unit tests configured. Run npm run test:concurrency for concurrency validation.'"
